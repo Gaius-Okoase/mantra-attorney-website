@@ -1,0 +1,27 @@
+{
+  "name": "mantra-attorney-project",
+  "version": "1.0.0",
+  "description": "Live website for Mantra Attorney LP (Hackathon Project)",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon backend/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gaius-Okoase/mantra-attorney-website.git"
+  },
+  "author": "Team BOTB",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gaius-Okoase/mantra-attorney-website/issues"
+  },
+  "homepage": "https://github.com/Gaius-Okoase/mantra-attorney-website#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
