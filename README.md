@@ -27,7 +27,7 @@ This project is a live website for **Mantra Attorney LP** law firm, featuring bo
 | Ojarotade Joshua        | Cloud Engineer     | Deployment (e.g., AWS, GCP, Render) |
 | Blessing Agundonu       | Cybersecurity      | Security auditing, auth, HTTPS, etc |
 | Mercy Ohiole            | Product Designer   | UI/UX mockups, Figma |
-| Auhustine Eguavoen      | Brand Identity     | Logo, color palette, typography |
+| Augustine Eguavoen      | Brand Identity     | Logo, color palette, typography |
 | Timilehin Badiora       | Product Manager    | Roadmap, task assignment, coordination |
 | Akorede Waheed Qoyum    | Data Analyst       | User insights, analytics setup |
 | Olaniyi Faith Oluwaseun | Content Writer     | Legal content, lawyer bios, copywriting |
