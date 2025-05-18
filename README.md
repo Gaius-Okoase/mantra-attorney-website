@@ -19,8 +19,10 @@ This project is a live website for **Mantra Attorney LP** law firm, featuring bo
 ---
 
 ## Team Roles
-| Name                    | Role               | Responsibilites
-|  Gaius Okoase            | Backend Lead       | API, data handling, routes, DB |
+
+| Name                    | Role              | Responsibilities |
+|-------------------------|-------------------|------------------|
+|  Gaius Okoase           | Backend Lead      | API, data handling, routes, DB |
 | Patricia Ada            | Frontend Dev       | UI development, connecting to API |
 | Ojarotade Joshua        | Cloud Engineer     | Deployment (e.g., AWS, GCP, Render) |
 | Blessing Agundonu       | Cybersecurity      | Security auditing, auth, HTTPS, etc |
