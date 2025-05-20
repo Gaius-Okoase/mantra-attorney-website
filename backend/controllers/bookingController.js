@@ -46,6 +46,9 @@ export const bookConsultation = async (req, res, next) => {
         console.log(`- Type: ${doc.documentType}`);
         console.log(`- Size: ${doc.documentSize} bytes`);
     });
+
+    //Response for successfull booking
+    return res.status(201).json({message: "Consultation booked successfully."});
     } catch (error) {
         console.log("Error booking consultation:", error);
         next(error);
