@@ -30,7 +30,7 @@ This project is a live website for **Mantra Attorney LP** law firm, featuring bo
 | Augustine Eguavoen      | Brand Identity     | Logo, color palette, typography |
 | Timilehin Badiora       | Product Manager    | Roadmap, task assignment, coordination |
 | Akorede Waheed Qoyum    | Data Analyst       | User insights, analytics setup |
-| Olaniyi Faith Oluwaseun | Content Writer     | Legal content, lawyer bios, copywriting |
+| Olaniyi Faith Oluwaseyi | Content Writer     | Legal content, lawyer bios, copywriting |
 ---
 
 ## Project Goals
