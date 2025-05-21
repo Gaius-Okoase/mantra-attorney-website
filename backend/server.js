@@ -1,7 +1,13 @@
 // Install necessary packages
 import express from 'express';
 import cors from 'cors';
+import dotenv from 'dotenv';
 import bookingRouter from './routers/bookingRouter.js'
+import { connectDb } from './config/db.js';
+
+dotenv.config(); // To access .env
+connectDb(); //Connect server to MongoDB
+
 const app = express(); // Instantiate express app
 
 //const PORT = 3500; // Set up port to listen to server
