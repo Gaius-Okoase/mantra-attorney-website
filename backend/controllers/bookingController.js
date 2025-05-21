@@ -62,7 +62,7 @@ export const bookConsultation = async (req, res, next) => {
 
     console.log('Booking instance:', newBooking);
 
-    
+
     await newBooking.save();
 
     //Response for successfull booking
@@ -72,3 +72,17 @@ export const bookConsultation = async (req, res, next) => {
         next(error);
     }
 }
+
+// Code Logic to get all bookings
+export const getAllBooking = async (req, res, next) => {
+    try {
+        const bookings = await Booking.find().sort({ createdAt: -1 }); // get all bookings
+        res.status(200).json({
+            totalBooking: bookings.length,
+            bookings: bookings
+        });
+    } catch (error) {
+        console.error(`Error retrieving bookings`);
+        next(error);
+    }
+};

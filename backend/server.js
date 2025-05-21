@@ -3,7 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import bookingRouter from './routers/bookingRouter.js'
-import { connectDb } from './config/db.js';
+import connectDb from './config/db.js';
 
 dotenv.config(); // To access .env
 connectDb(); //Connect server to MongoDB

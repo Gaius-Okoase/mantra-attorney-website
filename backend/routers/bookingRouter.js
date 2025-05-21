@@ -3,7 +3,7 @@ import express from 'express';
 import multer from 'multer';
 
 // Import modules from controllers
-import { bookConsultation } from '../controllers/bookingController.js';
+import { bookConsultation, getAllBooking } from '../controllers/bookingController.js';
 
 const router = express.Router(); // 
 const storage = multer.memoryStorage(); // Store files in memory
@@ -28,5 +28,6 @@ const upload = multer({
 });
 
 router.post('/', upload.array('documents', 5), bookConsultation);
+router.get('/', getAllBooking)
 
 export default router;
