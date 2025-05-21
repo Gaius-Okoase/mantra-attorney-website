@@ -1,5 +1,7 @@
 // Import validoator package to check email
 import validator from 'validator';
+//Import Models 
+import { Booking } from '../models/bookingModel.js';
 
 // Code Logic to Book Consultation
 export const bookConsultation = async (req, res, next) => {
@@ -29,23 +31,39 @@ export const bookConsultation = async (req, res, next) => {
     };
 
     // Handle document attachment
-    const docs = req.files;
-    if (!docs) {
+    const documents = req.files;
+    if (!documents) {
         return res.status(400).json({message: "No document attached."})
     }
-    const uploadedDocs = docs.map((file) => ({
+    const uploadedDocuments = documents.map((file) => ({
         documentName: file.originalname,
-       documentType: file.mimetype,
+        documentType: file.mimetype,
         documentSize: file.size,
         documentBuffer: file.buffer
     }));
 
-    uploadedDocs.forEach((doc, index) => {
+    uploadedDocuments.forEach((doc, index) => {
         console.log(`Document ${index + 1}:`);
         console.log(`- Name: ${doc.documentName}`);
         console.log(`- Type: ${doc.documentType}`);
         console.log(`- Size: ${doc.documentSize} bytes`);
     });
+
+    // Create and save new booking to DB
+    const newBooking = new Booking({
+        name,
+        email,
+        mobileNo,
+        legalServiceNeeded,
+        preferredDateAndTime,
+        comment,
+        uploadedDocuments
+    });
+
+    console.log('Booking instance:', newBooking);
+
+    
+    await newBooking.save();
 
     //Response for successfull booking
     return res.status(201).json({message: "Consultation booked successfully."});
