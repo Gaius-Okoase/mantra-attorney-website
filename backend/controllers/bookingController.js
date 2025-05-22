@@ -31,18 +31,18 @@ export const bookConsultation = async (req, res, next) => {
     };
 
     // Handle document attachment
-    const documents = req.files;
-    if (!documents) {
+    const file = req.files;
+    if (!file) {
         return res.status(400).json({message: "No document attached."})
     }
-    const uploadedDocuments = documents.map((file) => ({
-        documentName: file.originalname,
-        documentType: file.mimetype,
-        documentSize: file.size,
-        documentBuffer: file.buffer
+    const uploadedFile = file.map((file) => ({
+        fileName: file.originalname,
+        fileType: file.mimetype,
+        fileSize: file.size,
+        fileBuffer: file.buffer
     }));
 
-    uploadedDocuments.forEach((doc, index) => {
+    uploadedFile.forEach((doc, index) => {
         console.log(`Document ${index + 1}:`);
         console.log(`- Name: ${doc.documentName}`);
         console.log(`- Type: ${doc.documentType}`);
@@ -57,7 +57,7 @@ export const bookConsultation = async (req, res, next) => {
         legalServiceNeeded,
         preferredDateAndTime,
         comment,
-        uploadedDocuments
+        uploadedFile
     });
 
     console.log('Booking instance:', newBooking);

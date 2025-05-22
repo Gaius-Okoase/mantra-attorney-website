@@ -27,7 +27,7 @@ const upload = multer({
     }
 });
 
-router.post('/', upload.array('documents', 5), bookConsultation);
+router.post('/', upload.array('file', 5), bookConsultation);
 router.get('/', getAllBooking)
 
 export default router;

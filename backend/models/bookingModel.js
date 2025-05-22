@@ -25,10 +25,10 @@ const BookingSchema = new mongoose.Schema({
     comment: {
         type: String
     },
-    uploadedDocuments: [{
-        documentName: String,
-        documentType: String,
-        documentSize: Number,
+    uploadedFile: [{
+        fileName: String,
+        fileType: String,
+        fileSize: Number,
         s3Url: String
     }]
 }, {
