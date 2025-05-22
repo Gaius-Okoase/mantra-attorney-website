@@ -4,6 +4,7 @@ import multer from 'multer';
 
 // Import modules from controllers
 import { bookConsultation, getAllBooking } from '../controllers/bookingController.js';
+import { verifyAdmin } from '../middleware/verifyAdmin.js';
 
 const router = express.Router(); // 
 const storage = multer.memoryStorage(); // Store files in memory
@@ -28,6 +29,6 @@ const upload = multer({
 });
 
 router.post('/', upload.array('file', 5), bookConsultation);
-router.get('/', getAllBooking)
+router.get('/', verifyAdmin, getAllBooking);
 
 export default router;
