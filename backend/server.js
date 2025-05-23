@@ -15,7 +15,7 @@ const app = express(); // Instantiate express app
 
 // Middlewares to parse json data
 app.use(express.json());
-app.use(cors())
+app.use(cors({origin: "*"}))
 
 const PORT = 3500; // Set up port to listen to server
 
