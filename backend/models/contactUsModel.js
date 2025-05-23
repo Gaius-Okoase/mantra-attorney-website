@@ -13,10 +13,6 @@ const ContactUsSchema = new mongoose.Schema({
     mobileNo: {
         type: String,
         required: true
-    },
-    message: {
-        type: String,
-        required: true
     }
 }, {
     timestamps: true
