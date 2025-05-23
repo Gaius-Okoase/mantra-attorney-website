@@ -4,15 +4,15 @@ import jwt from 'jsonwebtoken';
 // Code Logic for Admin Login
 export const adminLogin = async (req, res, next) => {
     try {
-        const {email, password} = req.body
+        const {username, password} = req.body
 
         //Confirm availability of inputs
-        if(!email || !password) {
+        if(!username || !password) {
             return res.status(400).json({error: "Please input email and password"});
         }
         //Confirm email
-        if(email !== process.env.ADMIN_EMAIL) {
-            return res.status(401).json({error: "Unauthorized: Invalid Email."});
+        if(username !== process.env.ADMIN_USERNAME) {
+            return res.status(401).json({error: "Unauthorized: Invalid Username."});
         }
         const isPassword = await bcrypt.compare(password, process.env.ADMIN_PASSWORD);
         if(!isPassword) {
