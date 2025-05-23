@@ -24,7 +24,7 @@ app.use((req, res, next) => {
   next();
 });
 
-const PORT = 3500; // Set up port to listen to server
+const PORT = process.env.PORT || 3500; // Set up port to listen to server
 
 // API Routes
 app.use('/api/v1/booking', bookingRouter);
