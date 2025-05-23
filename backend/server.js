@@ -13,9 +13,16 @@ const app = express(); // Instantiate express app
 
 //const PORT = 3500; // Set up port to listen to server
 
-// Middlewares to parse json data
+// Middlewares
 app.use(express.json());
-app.use(cors({origin: "*"}))
+app.use(cors({origin: "*"}));
+app.use((req, res, next) => {
+  console.log(`Received request with ${req.method} from ${req.url} 
+    Origin: ${req.headers.origin}
+    Header: ${req.headers}
+    Body: ${req.body}`);
+  next();
+});
 
 const PORT = 3500; // Set up port to listen to server
 
