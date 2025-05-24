@@ -3,27 +3,40 @@ import jwt from 'jsonwebtoken';
 
 // Code Logic for Admin Login
 export const adminLogin = async (req, res, next) => {
-    try {
-        const {username, password} = req.body
+    // try {
+    //     const {username, password} = req.body
 
-        //Confirm availability of inputs
-        if(!username || !password) {
-            return res.status(400).json({error: "Please input email and password"});
-        }
-        //Confirm email
-        if(username !== process.env.ADMIN_USERNAME) {
-            return res.status(401).json({error: "Unauthorized: Invalid Username."});
-        }
-        const isPassword = await bcrypt.compare(password, process.env.ADMIN_PASSWORD);
-        if(!isPassword) {
-            return res.status(401).json({error: "Unauthorized: Invalid Password."});
-        }
-        const token = jwt.sign({role: "admin"}, process.env.JWT_SECRET, {expiresIn: "45m"});
-        console.log(`Admin login successfull`);
+    //     //Confirm availability of inputs
+    //     if(!username || !password) {
+    //         return res.status(400).json({error: "Please input email and password"});
+    //     }
+    //     //Confirm email
+    //     if(username !== process.env.ADMIN_USERNAME) {
+    //         return res.status(401).json({error: "Unauthorized: Invalid Username."});
+    //     }
+    //     const isPassword = await bcrypt.compare(password, process.env.ADMIN_PASSWORD);
+    //     if(!isPassword) {
+    //         return res.status(401).json({error: "Unauthorized: Invalid Password."});
+    //     }
+    //     const token = jwt.sign({role: "admin"}, process.env.JWT_SECRET, {expiresIn: "45m"});
+    //     console.log(`Admin login successfull`);
         
-        return res.status(200).json({message: "Login successful", token})
-    } catch (error) {
-        console.error(`Error logging in: ${error}`);
-        next(error);
-    };
+    //     return res.status(200).json({message: "Login successful", token})
+    // } catch (error) {
+    //     console.error(`Error logging in: ${error}`);
+    //     next(error);
+    // };
+    console.log('=== LOGIN ROUTE HIT ===');
+    console.log('Body:', req.body);
+    
+    // Skip all the bcrypt/jwt logic temporarily
+    return res.status(200).json({ 
+        message: "Route working", 
+        body: req.body,
+        envCheck: {
+            hasUsername: !!process.env.ADMIN_USERNAME,
+            hasPassword: !!process.env.ADMIN_PASSWORD,
+            hasJWT: !!process.env.JWT_SECRET
+        }
+    });
 };
