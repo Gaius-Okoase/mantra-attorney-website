@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+     <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M5G7QKBJ');</script>
+<!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="We are pleased to introduce Mantra Attorneys LP, a dynamic law firm that has been providing expert legal advisory services since 2024. Our firm is built on three core pillars: professionalism, effectiveness, and complexity of solutions for our clients."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mantra Attorneys LP &mdash; Your Law firm</title>
+
+
+    <link
+      rel="icon"
+      href="./Images/MantraA1.png"
+      sizes="any"
+      type="image/png"
+    />
+     <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/general.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/queries.css" />
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule=""
+      src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <script
+      src="https://kit.fontawesome.com/f567a8bfa0.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- scrolling link for sefari -->
+    <script
+      defer
+      src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"
+    ></script>
+     <style>
+    .profile-team-section {
+      font-family: "Rubik", sans-serif;
+      padding: 40px 20px;
+      text-align: center;
+      background-color: #fff;
+      margin-top: 10rem;
+    }
+
+    .profile-team-title {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: #2c3e50;
+    }
+
+    .profile-team-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .profile-team-card {
+      position: relative;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      max-width: 300px;
+      box-shadow: 0 1rem 0 #000036;
+      transition: transform 0.3s ease;
+    }
+
+    .profile-team-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .profile-team-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .profile-team-body {
+      padding: 20px;
+      z-index: 2;
+    }
+
+    .profile-team-body h3 {
+      margin: 0 0 10px;
+      font-size: 1.8rem;
+      color: #2c3e50;
+    }
+
+    .profile-team-body p {
+      margin: 0;
+      color: #666;
+      font-size: 1.5rem;
+    }
+
+    .profile-team-overlay {
+      position: absolute;
+      bottom: -100%;
+      left: 0;
+      width: 100%;
+      background-color: #000036;
+      color: #fff;
+      padding: 20px;
+      text-align: left;
+      font-size: 1.5rem;
+      transition: bottom 0.4s ease;
+      height: 100%;
+      box-sizing: border-box;
+      line-height: 2.5rem;
+    }
+
+    .profile-team-card:hover .profile-team-overlay {
+      bottom: 0;
+    }
+
+    .container-profile {
+      max-width: 80%;
+      line-height: 2.5rem;
+      background: #f8f9fa;
+      color: #333;
+      margin: 3rem 0 10rem 0;
+
+      display: flex;
+      min-height: 100vh;
+      flex-wrap: wrap;
+    }
+
+    .lawyer-profile {
+      border-radius: 20px;
+      box-shadow: 0.3rem 0.3rem 0 #000036;
+      padding: 1rem;
+      margin-top:2rem ;
+    }
+
+    .sidebar {
+      width: 250px;
+      background: #1e293b;
+      color: #fff;
+      padding: 2rem;
+      position: sticky;
+      top: 0;
+      height: 70vh;
+      overflow-y: auto;
+    }
+
+    .sidebar h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .sidebar nav ul {
+      list-style: none;
+    }
+
+    .sidebar nav ul li {
+      margin-bottom: 0.75rem;
+      margin-top: 2rem;
+    }
+
+    .sidebar nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.5rem;
+      display: block;
+      transition: color 0.2s ease;
+      
+    }
+
+    .sidebar nav ul li a:hover {
+      color: #fdf2e9;
+    
+    }
+
+    .content {
+      flex: 1;
+      padding: 2rem 8rem;
+      background: #fff;
+      overflow-y: auto;
+    }
+
+    .content section {
+      margin-bottom: 3rem;
+    }
+
+    .content h2 {
+      font-size: 2.2rem;
+      color: #0f172a;
+      margin: 4rem 0 2rem 0;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 0.5rem;
+    }
+
+    .content h3 {
+      font-size: 1.8rem;
+      color: #1e293b;
+      margin-top: 1.2rem;
+    }
+
+    .content p {
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      color: #334155;
+      letter-spacing: 0.1rem;
+    }
+
+    
+    @media (max-width: 1200px) {
+      .container-profile {
+        max-width: 100%;
+      }
+
+    }
+
+    @media (max-width: 768px) {
+      .container-profile {
+        flex-direction: column;
+        
+      }
+
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .profile-team-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+  </head>
+  <body class="sticky">
+     <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M5G7QKBJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    
+      <header class="header">
+        <div class="logo-div">
+          <img
+            class="logo-img"
+            alt="Mantra Attorneys LP logo"
+            src="./Images/MantraA1 png.png"
+          />
+          <h1>Mantra Attorneys LP</h1>
+        </div>
+
+        <nav class="main-nav">
+          <ul class="main-nav-list">
+            <li>
+              <a class="main-nav-link" href="./index.html"
+                ><i class="fa-solid fa-house"></i>Home</a
+              >
+            </li>
+
+            <li><a class="main-nav-link" href="#about"><i class="fa-solid fa-map-pin"></i>Partner Profile</a></li>
+          
+            
+            <a class="main-nav-link nav-cta" href="./legalProcess-form.html"
+              ><i class="fa-solid fa-address-card"></i> Start Legal Process </a
+            >
+          </li> 
+          </ul>
+        </nav>
+
+        <button class="btn-mobile-nav">
+          <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+          <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+        </button>
+      </header>
+
+    <main>
+        <section class="profile-team-section">
+    <h2 class="profile-team-title">Get to know Our Legal Partners</h2>
+    <div class="profile-team-container">
+
+      <!-- Lawyer 1 -->
+      <div class="profile-team-card">
+        <img src="https://media.istockphoto.com/id/1352488614/photo/confident-female-lawyer-stands-outside-office.jpg?b=1&s=612x612&w=0&k=20&c=fBg_M403XVU3n4VIPn-4Q96a3ilW6tRXRMhzMxSnZBU=" alt="Lawyer 1">
+        <div class="profile-team-body">
+          <h3>Barr. Patricia Ada</h3>
+          <p>Senior Partner - Criminal & Family Law</p>
+        </div>
+        <div class="profile-team-overlay">
+          Barr. Patricia Ada is a seasoned legal practitioner with over twenty years of experience in diverse areas of law, including criminal and civil litigation, administrative processes, company regulations, compliance strategies, and data protection.
+        </div>
+      </div>
+
+      <!-- Lawyer 2 -->
+      <div class="profile-team-card">
+        <img src="./Images/male-lawyer (2).jpg" alt="Lawyer 2">
+        <div class="profile-team-body">
+          <h3>Barr. John Okeke</h3>
+          <p>Associate - Property & Real Estate</p>
+        </div>
+        <div class="profile-team-overlay">
+          Barr. John Okeke is a seasoned legal practitioner with a strong educational foundation, having obtained his law degree from the University of Ilorin, Ilorin, Kwara State. He was called to the Nigeria Bar in 2018 and furthered his education with a Master's in Law from the University of Lagos, demonstrating his commitment to academic excellence and professional development.
+        </div>
+      </div>
+
+      <!-- Lawyer 3 -->
+      <div class="profile-team-card">
+        <img src="https://media.istockphoto.com/id/1492247375/photo/business-woman-portrait-and-lawyer-at-a-law-firm-feeling-proud-of-corporate-vision-happiness.jpg?b=1&s=612x612&w=0&k=20&c=l6IjuTPNO-wYF9YPkyv3TjOG4d1ivQvcJt3-MKwzs7g=" alt="Lawyer 3">
+        <div class="profile-team-body">
+          <h3>Barr. Aisha Bello</h3>
+          <p>Partner - Immigration & Corporate Law</p>
+        </div>
+        <div class="profile-team-overlay">
+          Barr. Aisha Bello is a distinguished legal practitioner, admitted to the Nigerian Bar as a Barrister and Solicitor of the Supreme Court of Nigeria. She earned her law degree from the prestigious Obafemi Awolowo University, laying the foundation for her successful legal career.
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+    <div class="container-profile">
+    <aside class="sidebar">
+      <h2>Legal Partners</h2>
+      <nav>
+        <ul>
+          <li><a href="#gideon"> GIDEON O. BALOGUN Esq.</a></li>
+          <li><a href="#samsom">SAMSOM A. OGUNDELE Esq.</a></li>
+          <li><a href="temilola">TEMILOLA B. OLAEGBE Esq. </a></li>
+          <li><a href="#">Barr. Patricia Ada</a></li>
+          <li><a href="#">Barr. John Okeke</a></li>
+          <li><a href="#">Barr. Aisha Bello</a></li>
+       
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="content">
+        <h2>Our Partner Profiles are:</h2>
+        <p>Our firm is comprised of three partners and other associate counsel with considerable years of experience,</p>
+        <h3>GIDEON O. BALOGUN, LLB. (Hons) LLM…</h3>
+        <h3>SAMSON A. OGUNDELE, LLB. (Hons), LLM</h3>
+        <h3>TEMILOLA B. OLAEGBE. LLB. (Hons), LLM (in view)</h3>
+     
+        <div id="gideon" class="lawyer-profile">
+            <h2>GIDEON O. BALOGUN, LL.M.</h2>
+        <p>Gideon O. Balogun is a seasoned legal practitioner with over thirteen years of experience in diverse areas of law, including criminal and civil litigation, administrative processes, company regulations, compliance strategies, and data protection. He holds a Bachelor of Laws (LL.B.) degree from Kogi State University and a Master of Laws (LL.M.) degree from the University of Ilorin, demonstrating his strong educational foundation in law.
+            Gideon possesses exceptional expertise in criminal and civil litigation, administrative processes, company regulations, compliance strategies, personnel administration, corporate governance, and data protection. His extensive experience has equipped him with a deep understanding of the complexities of corporate law and regulation.
+            As a highly efficient and competent legal practitioner, Gideon excels in ensuring that companies comply with and operate in accordance with statutory and legal provisions. His excellent organizational skills, attention to detail, and methodical approach make him a valuable asset to any organization.
+            Gideon is well-presented, highly personable, and possesses a deep knowledge of corporate regulatory and company rules. His ability to navigate complex legal issues with ease and provide expert guidance has earned him a reputation as a trusted and reliable legal advisor.
+</p>
+        </div>
+      
+        <div id="samson" class="lawyer-profile">
+           <h2>SAMSON A. OGUNDELE LLB, BL, LLM</h2>
+        <p>
+          Samson A. Ogundele is a seasoned legal practitioner with a strong educational foundation, having obtained his law degree from the University of Ilorin, Ilorin, Kwara State. He was called to the Nigeria Bar in 2018 and furthered his education with a Master's in Law from the University of Lagos, demonstrating his commitment to academic excellence and professional development.
+          Samson gained valuable experience in litigation and legal transactions when he joined the firm of Rotimi Jacobs SAN & Co., Lagos in 2020, a renowned full litigation law firm.
+          Currently, Samson is expanding his expertise in various legal transactions, including e-commerce, technology advisory services, telecommunication laws, medical law, litigation, corporate, commercial, and property practices.
+          As a prolific writer, Samson has authored numerous articles on law and humanities, both nationally and internationally, showcasing his expertise and thought leadership in the field.
+          With over seven years of experience as a seasoned litigator, Samson possesses reasonable experience in Criminal Law, property law and Debt Recovery, providing expert guidance and representation to clients in these areas.
+
+        </p>
+        </div>
+
+        <div class="lawyer-profile" id="temilola">
+                <h2>TEMILOLA B. OLAEGBE LLB, BL, LLM </h2>
+          <p>Temilola B. Olaegbe is a distinguished legal practitioner, admitted to the Nigerian Bar as a Barrister and Solicitor of the Supreme Court of Nigeria.
+            She earned her law degree from the prestigious Obafemi Awolowo University, laying the foundation for her successful legal career.
+            As a core litigator, Temilola possesses vast experience across diverse levels of courts in Nigeria, demonstrating her expertise and versatility in navigating complex legal matters. Throughout her career, Temilola has handled a wide range of cases, including debt and asset recovery, receivership, fundamental rights enforcement, breach of contract disputes, torts such as negligence, financial and banking disputes, unfreezing of bank customers' accounts, and criminal cases.
+            In addition, Temilola has expertise in insurance law, matrimonial causes, and child custody disputes, showcasing her ability to adeptly handle sensitive and complex matters. Her extensive experience and diverse expertise make Temilola a highly skilled and effective litigator, dedicated to delivering exceptional legal services to her clients.
+</p>
+        </div>
+
+      <h2>COPORATE SOCIAL RESPONSIBILITY</h2>
+      <p> Our firm is committed to making strong engagement towards giving back to the society through pro bono legal advice, charitable deeds and educational initiatives and programs. We sometimes undertake pro bono works to help tackle global humanitarian issues. We remain resolute and determined in supporting access to justice and community initiatives for the homeless and other socially disadvantaged groups.
+</p>
+<h3><em><strong>Be assured of our highest regards as we look forward to working with you.
+</strong></em></h3>
+ </section>
+    </main>
+  </div>
+  
+   
+    </main>
+
+       <footer class="footer">
+      <div class="container grid grid--footer">
+        <div class="logo-col">
+          <a href="#" class="footer-logo">
+            <img
+              class="logo-img"
+              alt="company-logo"
+              src="./Images/MantraA1 png.png"
+            />
+          </a>
+
+          <ul class="social-links">
+            <li>
+              <a class="footer-link" href="https://www.instagram.com"
+                ><ion-icon class="social-icon" name="logo-instagram"></ion-icon
+              ></a>
+            </li>
+            <li>
+              <a class="footer-link" href="https://www.facebook.com"
+                ><ion-icon class="social-icon" name="logo-facebook"></ion-icon
+              ></a>
+            </li>
+            <li>
+              <a class="footer-link" href="https://www.twitter.com"
+                ><ion-icon class="social-icon" name="logo-twitter"></ion-icon
+              ></a>
+            </li>
+             <li>
+              <a class="footer-link" href="https://www.youtube.com"
+                ><ion-icon class="social-icon" name="logo-youtube"></ion-icon>
+            </a>
+            </li>
+             <li>
+              <a class="footer-link" href=" https://www.linkedin.com"
+                ><ion-icon class="social-icon" name="logo-linkedin"></ion-icon>
+                </a>
+            </li>
+          </ul>
+
+          <p class="copyright">
+            Copyright &copy; <span class="year">2027</span> by Mantra Attorney LP, Inc.
+            <br>All rights reserved.
+          </p>
+        </div>
+
+        <div class="address-col">
+          <p class="footer-heading">Contact us</p>
+          <address class="contacts">
+            <h4>LAW OFFICE LAGOS</h4>
+            <p class="address">
+              1st Chancery House, No 5, 
+              C & I Leasing Drive, 
+              Lekki Phase 1, (In care of Hill & Springs) 
+              Lagos.
+            </p>
+            <p>
+              <a class="footer-link" href="tel:+2348137997815">+234 8137-997-815</a
+              ><br />
+              <a class="footer-link" href="tel:++2348154517333">+234 8154-517-333</a
+              >
+              <a class="footer-link" href="mailto:ogundelea076@gmail.com/mantraattorneys@gmail.com"
+                >ogundelea076@gmail.com</a
+              >
+              <a class="footer-link" href="mailto:mantraattorneys@gmail.com"
+                >mantraattorneys@gmail.com</a
+              >
+            </p>
+          </address>
+        </div>
+
+        <nav class="nav-col">
+          <p class="footer-heading">Practice Area</p>
+          <ul class="footer-nav">
+            <li><a class="footer-link" href="https://en.wikipedia.org/wiki/Litigation_strategy" target="_blank">Litigation</a></li>
+            <li><a class="footer-link" href="https://en.wikipedia.org/wiki/Maritime." target="_blank">Maritime law</a></li>
+            <li><a class="footer-link" href="https://en.wikipedia.org/wiki/Tax_law" target="_blank">Taxation</a></li>
+            <li><a class="footer-link" href="https://en.wikipedia.org/wiki/Labour_law" target="">Labour law</a></li>
+          </ul>
+        </nav>
+
+        <nav class="nav-col">
+          <p class="footer-heading">Company</p>
+          <ul class="footer-nav">
+            <li><a class="footer-link" href="./legalProcess-form.html">Engage Us</a></li>
+            <li><a class="footer-link" href="./legalServices.html">File a case</a></li>
+            <li><a class="footer-link" href="https://en.wikipedia.org/wiki/Court" target="_blank">Courts</a></li>
+            <li><a class="footer-link" href="https://en.wikipedia.org/wiki/Chambers_and_Partners" target="_blank">Chambers</a></li>
+          </ul>
+        </nav>
+
+        <nav class="nav-col">
+          <p class="footer-heading">Resources</p>
+          <ul class="footer-nav">
+            <li><a class="footer-link" href="https://en.wikipedia.org/wiki/Index_of_law_articles" target="_blank">Articles</a></li>
+            <li><a class="footer-link" href="https://www.amazon.com/Law-Nigerian-Studies-Books/s?rh=n%3A10777%2Cp_28%3ANigerian%2BStudies" target="_blank">Book</a></li>
+            <li><a class="footer-link" href="https://www.nigerianbar.org.ng/" target="_blank">News</a></li>
+            <li><a class="footer-link" href="./privacy-policy.html" target="_blank">Privacy Policy</a></li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+     <script src="script.js"></script>
+  </body>
+</html>
