@@ -29,7 +29,7 @@ const PORT = process.env.PORT || 3500; // Set up port to listen to server
 
 // API Routes
 app.use('/api/v1/booking', bookingRouter);
-app.use('/api/v1/auth/login', authRouter);
+app.use('/api/v1/auth', authRouter);
 // Global Error Handler
 app.use((err, req, res, next) => {
     console.log(err);
