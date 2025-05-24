@@ -29,7 +29,8 @@ const BookingSchema = new mongoose.Schema({
         fileName: String,
         fileType: String,
         fileSize: Number,
-        s3Url: String
+        s3Url: String,
+        s3Key: String
     }]
 }, {
     timestamps: true

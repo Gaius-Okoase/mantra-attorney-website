@@ -2,6 +2,7 @@
 import validator from 'validator';
 //Import Models 
 import { Booking } from '../models/bookingModel.js';
+import { uploadFileToS3 } from '../utils/s3Uploader.js';
 
 // Code Logic to Book Consultation
 export const bookConsultation = async (req, res, next) => {
@@ -35,19 +36,35 @@ export const bookConsultation = async (req, res, next) => {
     if (!file) {
         return res.status(400).json({message: "No document attached."})
     }
-    const uploadedFile = file.map((file) => ({
-        fileName: file.originalname,
-        fileType: file.mimetype,
-        fileSize: file.size,
-        fileBuffer: file.buffer
-    }));
+    // const uploadedFile = file.map((file) => ({
+    //     fileName: file.originalname,
+    //     fileType: file.mimetype,
+    //     fileSize: file.size,
+    //     fileBuffer: file.buffer
+    // }));
 
-    uploadedFile.forEach((doc, index) => {
-        console.log(`Document ${index + 1}:`);
-        console.log(`- Name: ${doc.documentName}`);
-        console.log(`- Type: ${doc.documentType}`);
-        console.log(`- Size: ${doc.documentSize} bytes`);
-    });
+    // uploadedFile.forEach((doc, index) => {
+    //     console.log(`File ${index + 1}:`);
+    //     console.log(`- Name: ${doc.fileName}`);
+    //     console.log(`- Type: ${doc.fileType}`);
+    //     console.log(`- Size: ${doc.fileSize} bytes`);
+    // });
+
+    //Handling files with AWS S3
+    const uploadedFiles = [];
+
+    for (const file of req.files || []) {
+        const result = await uploadFileToS3(file); 
+        uploadedFiles.push({
+            name: file.originalname,
+            type: file.mimetype,
+            size: file.size,
+            s3Url: result.url,
+            s3Key: result.key,
+        });
+        // Log file details to console
+        //console.log(`Uploaded file: ${file.originalname}, type: ${file.mimetype}, size: ${file.size}`);
+    }   
 
     // Create and save new booking to DB
     const newBooking = new Booking({
@@ -57,7 +74,7 @@ export const bookConsultation = async (req, res, next) => {
         legalServiceNeeded,
         preferredDateAndTime,
         comment,
-        uploadedFile
+        uploadedFile: uploadedFiles
     });
 
     console.log('Booking instance:', newBooking);
