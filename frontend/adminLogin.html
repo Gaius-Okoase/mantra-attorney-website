@@ -109,7 +109,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       margin: 0.5rem 0;
       border: none;
       border-radius: 8px;
-      background: rgba(255, 255, 255, 0.15);
+      background: #d7d3d3;
       color: #000036;
       font-size: 1.5rem;
     }
@@ -360,6 +360,7 @@ function login() {
   .then(response => {
     if (!response.ok) throw new Error('Login failed');
     return response.json();
+      console.log('Response:', data); // View server's error message
   })
   .then(data => {
     localStorage.setItem('authToken', data.token);
