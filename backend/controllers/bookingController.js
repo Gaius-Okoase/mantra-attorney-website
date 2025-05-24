@@ -3,6 +3,7 @@ import validator from 'validator';
 //Import Models 
 import { Booking } from '../models/bookingModel.js';
 import { uploadFileToS3 } from '../utils/s3Uploader.js';
+import { sendBookingEmail } from '../utils/emailSender.js';
 
 // Code Logic to Book Consultation
 export const bookConsultation = async (req, res, next) => {
@@ -56,9 +57,9 @@ export const bookConsultation = async (req, res, next) => {
     for (const file of req.files || []) {
         const result = await uploadFileToS3(file); 
         uploadedFiles.push({
-            name: file.originalname,
-            type: file.mimetype,
-            size: file.size,
+            fileName: file.originalname,
+            fileType: file.mimetype,
+            fileSize: file.size,
             s3Url: result.url,
             s3Key: result.key,
         });
@@ -82,12 +83,15 @@ export const bookConsultation = async (req, res, next) => {
 
     await newBooking.save();
 
+    //Send booking notification to admin
+    await sendBookingEmail(newBooking);
+
     //Response for successfull booking
     return res.status(201).json({message: "Consultation booked successfully."});
     } catch (error) {
         console.log("Error booking consultation:", error);
         next(error);
-    }
+    };
 }
 
 // Code Logic to get all bookings
