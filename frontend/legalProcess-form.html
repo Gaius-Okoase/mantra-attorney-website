@@ -135,23 +135,9 @@ form button:hover {
 
 #success-message {
   color: green;
-  margin-top: 0.9375rem;
+  margin-top:2rem;
   font-weight: bold;
-}
-
-ul#usersInfo {
-  list-style-type: none;
-  padding: 0;
-  margin-top: 1.875rem;
-}
-
-ul#usersInfo li {
-  background-color: #e9f0fe;
-  padding: 0.75rem;
-  margin-bottom: 0.625rem;
-  border-left: 0.25rem solid #000036;
-  border-radius: 0.3125rem;
-  font-size: 0.95rem;
+  font-size: 1.6rem;
 }
 
 /* 📱 Responsive tweak for small screens */
@@ -250,7 +236,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div id="success-message"></div>
   </form>
 
-  <ul id="usersInfo"></ul>
+  
 </section>
 
     </main>
@@ -357,10 +343,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </footer>
      <script src="script.js"></script>
-<script>
+    <script>
   const form = document.getElementById("my-form");
   const successMessage = document.getElementById("success-message");
-  const usersInfo = document.getElementById("usersInfo");
 
   function showError(id) {
     document.getElementById(id).style.display = "block";
@@ -388,29 +373,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     if (!name || name.length < 3) { showError("error-name"); isValid = false; }
     if (!/^\S+@\S+\.\S+$/.test(email)) { showError("error-email"); isValid = false; }
-    
-    if (!/^\+?[0-9\s\-()]{7,20}$/.test(phone)) {
-    showError("error-phone");
-    isValid = false;
-}
+    if (!/^\+?[0-9\s\-()]{7,20}$/.test(phone)) { showError("error-phone"); isValid = false; }
     if (!practise) { showError("error-practise"); isValid = false; }
     if (!date) { showError("error-date"); isValid = false; }
-    if (!bio || bio.length < 10) { showError("error-bio"); isValid = false; }
 
-    if (!file) {
+    // bio is optional, validate only if filled
+    if (bio && bio.length < 10) {
+      showError("error-bio");
+      isValid = false;
+    }
+
+    const allowedTypes = [
+      "application/pdf",
+      "application/msword",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    ];
+    document.getElementById("error-file").textContent = "";
+
+    if (file && !allowedTypes.includes(file.type)) {
+      document.getElementById("error-file").textContent = "Only PDF or Word documents are allowed.";
       showError("error-file");
       isValid = false;
-    } else {
-      const allowedTypes = [
-        "application/pdf",
-        "application/msword",
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-      ];
-      if (!allowedTypes.includes(file.type)) {
-        document.getElementById("error-file").textContent = "Only PDF or Word documents are allowed.";
-        showError("error-file");
-        isValid = false;
-      }
     }
 
     if (!isValid) return;
@@ -422,35 +405,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     formData.append("legalServiceNeeded", practise);
     formData.append("preferredDateAndTime", date);
     formData.append("comment", bio);
-    formData.append("file", file);
+    if (file) {
+      formData.append("file", file);
+    }
+
+    // ✅ Show loading message
+    successMessage.textContent = "Loading... Please wait.";
 
     try {
-      // Optional: log the form data for debugging
-      // for (let pair of formData.entries()) {
-      //   console.log(pair[0] + ': ' + pair[1]);
-      // }
-
       const response = await fetch("https://mantra-attorney-website.onrender.com/api/v1/booking", {
         method: "POST",
         body: formData
       });
 
       if (response.ok) {
-        const li = document.createElement("li");
-        li.textContent = `${name} | ${email} | ${phone} | ${practise} | ${date} | Bio: ${bio} | File: ${file.name}`;
-        usersInfo.appendChild(li);
-        successMessage.textContent = "Submission successful!";
+        successMessage.textContent = "Submission successful! You will recieve an email shortly";
         form.reset();
       } else {
+        successMessage.textContent = "";
         showError("error-form");
         document.getElementById("error-form").textContent = "Failed to submit the form.";
       }
     } catch (error) {
       console.error("Error:", error);
+      successMessage.textContent = "";
       showError("error-form");
       document.getElementById("error-form").textContent = "Error sending data.";
     }
   });
 </script>
+
   </body>
 </html>
