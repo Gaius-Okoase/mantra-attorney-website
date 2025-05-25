@@ -10,11 +10,11 @@ export const verifyAdmin = (req, res, next) => {
   }
 
   // Get the token part
-  const token = authHeader.split(' ')[1];
+  const authToken = authHeader.split(' ')[1];
 
   try {
     // Verify token using the secret key
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(authToken, process.env.JWT_SECRET);
 
     // Check if user has the admin role
     if (decoded.role !== 'admin') {
