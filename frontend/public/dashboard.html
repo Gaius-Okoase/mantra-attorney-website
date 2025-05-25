@@ -66,40 +66,69 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
      <style>
 
 
-    header {
-      background: #003366;
-      color: white;
-      padding: 1rem;
-      text-align: center;
+     <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f6f9fc;
+      margin: 0;
+      padding: 0;
     }
 
-    .dashboard {
+    .dashboard-container {
       max-width: 900px;
-      margin: 2rem auto;
-      padding: 1rem;
+      margin: auto;
+      padding: 20px;
       background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
-    h1 {
-      margin-top: 0;
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    .logout-btn {
-      background: #d9534f;
+    header h1 {
+      margin: 0;
+      color: #2c3e50;
+    }
+
+    header button {
+      background-color: #e74c3c;
       color: white;
-      padding: 0.5rem 1rem;
       border: none;
-      border-radius: 5px;
+      padding: 8px 16px;
       cursor: pointer;
-      float: right;
-      margin-top: -3rem;
+      border-radius: 5px;
     }
 
-    .logout-btn:hover {
-      background: #c9302c;
+    .summary h2 {
+      color: #2980b9;
     }
+
+    .booking-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .booking-list li {
+      padding: 12px;
+      border-bottom: 1px solid #ccc;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .error-message {
+      color: red;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .loading {
+      color: #555;
+      font-style: italic;
+    }
+  </style>
   </style>
   </head>
   <body class="sticky">
@@ -143,15 +172,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <main>
       <section>
-                    <header>
-              <h1>Admin Dashboard</h1>
-              <button class="logout-btn" onclick="logout()">Logout</button>
-            </header>
+                 <div class="dashboard-container">
+    <header>
+      <h1>Admin Dashboard</h1>
+      <p>You are highly welcome</p>
+      <button onclick="logout()">Logout</button>
+    </header>
 
-            <div class="dashboard">
-              <h2>Welcome, Admin</h2>
-              <p id="message">Loading dashboard data...</p>
-            </div>
+    <section class="summary">
+      <h2>Total Bookings: <span id="total-bookings">Loading...</span></h2>
+    </section>
+
+    <section>
+      <h2>Booking Details</h2>
+      <p id="loading" class="loading">Fetching bookings...</p>
+      <ul id="booking-list" class="booking-list"></ul>
+    </section>
+
+    <p id="message" class="error-message"></p>
+  </div>
       </section>
 
     </main>
@@ -259,35 +298,53 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </footer>
      <script src="script.js"></script>
    
-     <script>
-    const API_URL = 'https://mantra-attorney-website.onrender.com/api/v1/admin/dashboard'; // Your dashboard API endpoint
-const token = localStorage.getItem('authToken');
+  
+  <script>
+    const API_URL = 'https://mantra-attorney-website.onrender.com/api/v1/admin/dashboard';
+    const token = localStorage.getItem('authToken');
 
-if (!token) {
-  window.location.href = '/adminLogin.html'; // Redirect to login if no token
-}
+    if (!token) {
+      window.location.href = '/adminLogin.html';
+    }
 
-function logout() {
-  localStorage.removeItem('authToken');
-  window.location.href = '/adminLogin.html'; // Redirect to login on logout
-}
+    function logout() {
+      localStorage.removeItem('authToken');
+      window.location.href = '/adminLogin.html';
+    }
 
-fetch(API_URL, {
-  headers: {
-    'Authorization': 'Bearer ' + token
-  }
-})
-.then(response => {
-  if (!response.ok) throw new Error('Unauthorized');
-  return response.json();
-})
-.then(data => {
-  document.getElementById('message').textContent = `You have access to admin data: ${JSON.stringify(data)}`;
-})
-.catch(err => {
-  document.getElementById('message').textContent = 'Access denied or session expired. Redirecting to login...';
-  setTimeout(() => window.location.href = '/adminLogin.html', 5000);
-});
+    fetch(API_URL, {
+      headers: {
+        'Authorization': 'Bearer ' + token
+      }
+    })
+    .then(response => {
+      if (!response.ok) throw new Error('Unauthorized');
+      return response.json();
+    })
+    .then(bookings => {
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('total-bookings').textContent = bookings.length;
+
+      const list = document.getElementById('booking-list');
+      bookings.forEach(booking => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <strong>Name:</strong> ${booking.name}<br/>
+          <strong>Email:</strong> ${booking.email}<br/>
+          <strong>Phone:</strong> ${booking.mobileNo}<br/>
+          <strong>Service:</strong> ${booking.legalServiceNeeded}<br/>
+          <strong>Date:</strong> ${new Date(booking.preferredDateAndTime).toLocaleString()}<br/>
+          <strong>Comment:</strong> ${booking.comment || 'N/A'}
+        `;
+        list.appendChild(li);
+      });
+    })
+    .catch(err => {
+      document.getElementById('loading').style.display = 'none';
+      const msg = document.getElementById('message');
+      msg.textContent = 'Access denied or session expired. Redirecting to login...';
+      setTimeout(() => window.location.href = '/adminLogin.html', 4000);
+    });
   </script>
 
   </body>
