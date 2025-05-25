@@ -33,23 +33,26 @@ export const bookConsultation = async (req, res, next) => {
     };
 
     // Handle document attachment
-    const file = req.files;
-    if (!file) {
-        return res.status(400).json({message: "No document attached."})
-    }
-    // const uploadedFile = file.map((file) => ({
-    //     fileName: file.originalname,
-    //     fileType: file.mimetype,
-    //     fileSize: file.size,
-    //     fileBuffer: file.buffer
-    // }));
+    //? Comment out mandatory file upload requirements
+    /* const file = req.files;
+     if (!file) {
+         return res.status(400).json({message: "No document attached."})
+     } */
 
-    // uploadedFile.forEach((doc, index) => {
-    //     console.log(`File ${index + 1}:`);
-    //     console.log(`- Name: ${doc.fileName}`);
-    //     console.log(`- Type: ${doc.fileType}`);
-    //     console.log(`- Size: ${doc.fileSize} bytes`);
-    // });
+    //? Comment out logic for file meta data with only multer
+    /* const uploadedFile = file.map((file) => ({
+        fileName: file.originalname,
+        fileType: file.mimetype,
+        fileSize: file.size,
+        fileBuffer: file.buffer
+    })); 
+
+    uploadedFile.forEach((doc, index) => {
+        console.log(`File ${index + 1}:`);
+        console.log(`- Name: ${doc.fileName}`);
+        console.log(`- Type: ${doc.fileType}`);
+        console.log(`- Size: ${doc.fileSize} bytes`);
+    });*/
 
     //Handling files with AWS S3
     const uploadedFiles = [];
