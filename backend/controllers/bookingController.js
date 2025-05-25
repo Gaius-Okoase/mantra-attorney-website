@@ -33,13 +33,13 @@ export const bookConsultation = async (req, res, next) => {
     };
 
     // Handle document attachment
-    //? Commenting out mandatory file upload requirements
+    //? Comment out mandatory file upload requirements
     /* const file = req.files;
      if (!file) {
          return res.status(400).json({message: "No document attached."})
      } */
 
-    //? Commenting out logic for file meta data with only multer
+    //? Comment out logic for file meta data with only multer
     /* const uploadedFile = file.map((file) => ({
         fileName: file.originalname,
         fileType: file.mimetype,
