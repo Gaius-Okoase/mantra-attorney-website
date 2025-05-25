@@ -24,8 +24,8 @@ export const sendBookingEmail = async (bookingInfo) => {
                 <p><strong>Mobile:</strong> ${bookingInfo.mobileNo}</p>
                 <p><strong>Legal Service Needed:</strong> ${bookingInfo.legalServiceNeeded}</p>
                 <p><strong>Preferred Date And Time:</strong> ${bookingInfo.preferredDateAndTime}</p>
-                <p><strong>Message:</strong> ${bookingInfo.message || 'N/A'}</p>
-                <p><strong>Files Uploaded:</strong> ${bookingInfo.uploadedFile && bookingInfo.uploadedFile.length > 0 ? bookingInfo.uploadedFile.map(f => f.fileName).join(", ") : 'None'}</p> 
+                <p><strong>Message:</strong> ${bookingInfo.comment || 'N/A'}</p>
+                <p><strong>Files Uploaded:</strong> ${bookingInfo.uploadedFile?.length || 0}</p> 
             `
         };
 
