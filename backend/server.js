@@ -2,6 +2,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import path from 'path';
 import bookingRouter from './routers/bookingRouter.js'
 import authRouter from './routers/authRouter.js'
 import connectDb from './config/db.js';
