@@ -6,6 +6,7 @@ import path from 'path';
 import bookingRouter from './routers/bookingRouter.js'
 import authRouter from './routers/authRouter.js'
 import connectDb from './config/db.js';
+import { verifyAdmin } from './middleware/verifyAdmin.js';
 
 dotenv.config(); // To access .env
 connectDb(); //Connect server to MongoDB
@@ -25,6 +26,22 @@ app.use((req, res, next) => {
     Body: ${req.body}`);
   next();
 });
+
+//* Code Logic to serve static public folder
+
+// Serve script.js from frontend dir for html files
+app.use(express.static(path.join(__dirname, '../frontend')));
+//Serve static public files
+app.use(express.static(path.join(__dirname, 'public')));
+// Route to login page
+app.get('/adminLogin.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'adminLogin.html'));
+});
+// Protected route for dashboard page
+app.get('/dashboard.html', verifyAdmin, (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
+});
+
 
 const PORT = process.env.PORT || 3500; // Set up port to listen to server
 
