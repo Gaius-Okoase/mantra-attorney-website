@@ -34,9 +34,9 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 //Serve static public files
 app.use(express.static(path.join(__dirname, 'public')));
 // Route to login page
-app.get('/adminLogin.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'adminLogin.html'));
-});
+//app.get('/adminLogin.html', (req, res) => {
+//  res.sendFile(path.join(__dirname, 'public', 'adminLogin.html'));
+//});
 // Protected route for dashboard page
 app.get('/dashboard.html', verifyAdmin, (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
