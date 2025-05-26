@@ -7,11 +7,15 @@ import bookingRouter from './routers/bookingRouter.js'
 import authRouter from './routers/authRouter.js'
 import connectDb from './config/db.js';
 import { verifyAdmin } from './middleware/verifyAdmin.js';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 dotenv.config(); // To access .env
 connectDb(); //Connect server to MongoDB
 
 const app = express(); // Instantiate express app
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 //const PORT = 3500; // Set up port to listen to server
 
@@ -34,9 +38,9 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 //Serve static public files
 app.use(express.static(path.join(__dirname, 'public')));
 // Route to login page
-//app.get('/adminLogin.html', (req, res) => {
-//  res.sendFile(path.join(__dirname, 'public', 'adminLogin.html'));
-//});
+app.get('/adminLogin.html', (req, res) => {
+ res.sendFile(path.join(__dirname, 'public', 'adminLogin.html'));
+});
 // Protected route for dashboard page
 app.get('/dashboard.html', verifyAdmin, (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
