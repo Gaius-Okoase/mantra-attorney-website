@@ -163,7 +163,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                  <div class="dashboard-container">
     <header>
       <h1>Admin Dashboard</h1>
-      <p>You are highly welcome</p>
+      <h2>Welcome, Admin</h2>
       <button onclick="logout()">Logout</button>
     </header>
 
@@ -317,12 +317,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       bookings.forEach(booking => {
         const li = document.createElement('li');
         li.innerHTML = `
-          <strong>Name:</strong> ${booking.name}<br/>
-          <strong>Email:</strong> ${booking.email}<br/>
-          <strong>Phone:</strong> ${booking.mobileNo}<br/>
-          <strong>Service:</strong> ${booking.legalServiceNeeded}<br/>
-          <strong>Date:</strong> ${new Date(booking.preferredDateAndTime).toLocaleString()}<br/>
-          <strong>Comment:</strong> ${booking.comment || 'N/A'}
+          <strong>Name: </strong> ${booking.name}<br/>
+          <strong>Email: </strong> ${booking.email}<br/>
+          <strong>Phone: </strong> ${booking.mobileNo}<br/>
+          <strong>Service: </strong> ${booking.legalServiceNeeded}<br/>
+          <strong>Date: </strong> ${new Date(booking.preferredDateAndTime).toLocaleString()}<br/>
+          <strong>Comment: </strong> ${booking.comment || 'N/A'}<br/>
+          <strong>Document(s) Attached: </strong>   ${b.uploadFile && b.uploadFile.length > 0? `<a href="${b.uploadFile[0].s3Url}" target="_blank">View File</a>`: 'No File'}
         `;
         list.appendChild(li);
       });

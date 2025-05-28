@@ -101,10 +101,7 @@ export const bookConsultation = async (req, res, next) => {
 export const getAllBooking = async (req, res, next) => {
     try {
         const bookings = await Booking.find().sort({ createdAt: -1 }); // get all bookings
-        res.status(200).json({
-            totalBooking: bookings.length,
-            bookings: bookings
-        });
+        res.status(200).json(bookings);
     } catch (error) {
         console.error(`Error retrieving bookings`);
         next(error);

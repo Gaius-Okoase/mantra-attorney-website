@@ -14,8 +14,8 @@ dotenv.config(); // To access .env
 connectDb(); //Connect server to MongoDB
 
 const app = express(); // Instantiate express app
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = dirname(__filename);
 
 //const PORT = 3500; // Set up port to listen to server
 
@@ -33,18 +33,16 @@ app.use((req, res, next) => {
 
 //* Code Logic to serve static public folder
 
-// Serve script.js from frontend dir for html files
-app.use(express.static(path.join(__dirname, '../frontend')));
 //Serve static public files
-app.use(express.static(path.join(__dirname, 'public')));
-// Route to login page
-app.get('/adminLogin.html', (req, res) => {
- res.sendFile(path.join(__dirname, 'public', 'adminLogin.html'));
-});
-// Protected route for dashboard page
-app.get('/dashboard.html', verifyAdmin, (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
-});
+app.use(express.static('public'));
+// // Route to login page
+// app.get('/adminLogin.html', (req, res) => {
+//  res.sendFile(path.join(__dirname, 'public', 'adminLogin.html'));
+// });
+// // Protected route for dashboard page
+// app.get('/dashboard.html', verifyAdmin, (req, res) => {
+//   res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
+// });
 
 
 const PORT = process.env.PORT || 3500; // Set up port to listen to server

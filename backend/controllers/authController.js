@@ -18,10 +18,10 @@ export const adminLogin = async (req, res, next) => {
         if(!isPassword) {
             return res.status(401).json({error: "Unauthorized: Invalid Password."});
         }
-        const authToken = jwt.sign({role: "admin"}, process.env.JWT_SECRET, {expiresIn: "45m"});
+        const token = jwt.sign({role: "admin"}, process.env.JWT_SECRET, {expiresIn: "45m"});
         console.log(`Admin login successfull`);
         
-        return res.status(200).json({message: "Login successful", authToken})
+        return res.status(200).json({message: "Login successful", token})
     } catch (error) {
         console.error(`Error logging in: ${error}`);
         next(error);

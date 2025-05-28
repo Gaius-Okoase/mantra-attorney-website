@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div id="login-section">
+    <h2>Admin Login</h2>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="login()">Login</button>
+    <p id="login-error" style="color: red;"></p>
+  </div>
+
+  <div id="dashboard-section" style="display: none;">
+    <h2>Admin Dashboard</h2>
+
+    
+  <div id="analytics">
+    <p>Total Bookings: <span id="total-bookings">0</span></p>
+    <p>Latest Booking: <span id="latest-booking">None</span></p>
+  </div>
+
+  
+  <button id="view-bookings-btn">View Bookings</button>
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Name</th><th>Email</th><th>Mobile Number</th><th>Legal Service Needed</th><th>Preferred Date And Time</th><th>Message</th><th>Document(s) Attached</th>
+        </tr>
+      </thead>
+      <tbody id="bookings-body"></tbody>
+    </table>
+
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
