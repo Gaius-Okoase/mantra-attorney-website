@@ -138,3 +138,17 @@ export const searchBookings = async (req, res, next) => {
         next(error);
     };
 };
+
+// Code Logic for dashboard analytics
+export const getBookingsAnalytics = async (req, res, next) => {
+    try {
+        //* Retrieve bookings from mongoDB first, then return length
+        /*const bookings = await Booking.find().sort({ createdAt: -1})
+        const totalBookings = bookings.length;*/
+        //* Use mongoDB countDocuments() method
+        const totalBookings = await Booking.countDocuments();
+        return res.status(200).json({totalBookings});
+    } catch (error) {
+        next(error);
+    };
+};

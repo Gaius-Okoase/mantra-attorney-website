@@ -3,7 +3,7 @@ import express from 'express';
 import multer from 'multer';
 
 // Import modules from controllers
-import { bookConsultation, getAllBooking, searchBookings } from '../controllers/bookingController.js';
+import { bookConsultation, getAllBooking, searchBookings, getBookingsAnalytics } from '../controllers/bookingController.js';
 import { verifyAdmin } from '../middleware/verifyAdmin.js';
 
 const router = express.Router(); // 
@@ -31,5 +31,7 @@ const upload = multer({
 router.post('/', upload.array('file', 5), bookConsultation);
 router.get('/', verifyAdmin, getAllBooking);
 router.get('/search', verifyAdmin, searchBookings);
+router.get('/analytics', verifyAdmin, getBookingsAnalytics);
+
 
 export default router;
