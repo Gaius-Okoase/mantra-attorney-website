@@ -25,7 +25,7 @@
   }
 
   .logo-img {
-    height: 15rem;
+    height: 10rem;
   }
 
   .logo-div h1 {
@@ -33,7 +33,7 @@
   }
 
   .main-nav-list {
-    gap: 1.5rem;
+    gap: 2rem;
     font-size: 1.8rem;
   }
   .hero-video {
@@ -79,7 +79,7 @@
   }
 
   .logo-img {
-    height: 15rem;
+    height: 10rem;
   }
 
   .logo-div h1 {
@@ -87,13 +87,23 @@
   }
 
   .main-nav-list {
-    gap: 1.5rem;
+    gap: 2.5rem;
     font-size: 1.8rem;
   }
 
   .hero {
     gap: 4.8rem;
   }
+
+     .introduction-section {
+        width: 80%;
+        padding: 2rem;
+}
+
+.container-profile {
+  max-width: 100%;
+  
+}
 }
 
   /**************************/
@@ -114,6 +124,7 @@
     font-size: 1.8rem;
   }
 
+  
 }
 
   /**************************/
@@ -125,9 +136,12 @@
       /* 8px / 16px = 0.5 = 50% */
       font-size: 50%;
     }
+    .container {
+      padding: 0 2rem;
+    }
 
     .logo-img {
-      height: 15rem;
+      height: 10rem;
     }
 
     .logo-div h1 {
@@ -149,6 +163,7 @@
       height: 130%;
     }
 
+   
     .delivered-cases {
       justify-content: center;
       margin-top: 3.2rem;
@@ -179,6 +194,10 @@
       margin-top: 1.2rem;
     }
 
+    .footer-div {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
     /* MOBILE NAVIGATION */
 
     .btn-mobile-nav {
@@ -243,6 +262,19 @@
     .hero {
       grid-template-columns: 1fr;
     }
+
+      .container {
+      padding: 0 2rem;
+    }
+
+    .content  {
+  padding: 3rem 4rem;
+}
+
+    .footer-div {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
   }
 
   /**************************/
@@ -252,6 +284,15 @@
     .grid--3-cols,
     .grid--4-cols {
       grid-template-columns: repeat(2, 1fr);
+    }
+
+       .container {
+      padding: 0 2rem;
+    }
+
+     .slide-text {
+      max-width: 100%;
+      font-size: 3rem;
     }
 
     .aboutUs h2 {
@@ -269,8 +310,6 @@
       justify-self: center;
       
     }
-
-    
 
     .heading-secondary {
       margin-bottom: 4.8rem;
@@ -298,6 +337,11 @@
     .footer-logo {
       width: 20rem;
     }
+
+    .footer-div {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
   }
 
   /**************************/
@@ -315,8 +359,13 @@
       grid-template-columns: 1fr;
     }
 
+       .container {
+      padding: 0 2rem;
+    }
+
+
      .logo-img {
-    height: 10rem;
+    height: 8rem;
   }
 
   .logo-div h1 {
@@ -366,6 +415,14 @@
       width: 80%;
     }
 
+       .introduction-section {
+        width: 95%;
+        padding: 2rem;
+}
+
+.content  {
+  padding: 3rem 2rem;
+}
     .step-img-box:nth-child(2) {
       grid-row: 1;
     }
@@ -400,7 +457,13 @@
     }
 
     .footer-logo {
-      width: 13rem;
+      width: 8rem;
     }
+
+    .footer-div {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
   }
 
