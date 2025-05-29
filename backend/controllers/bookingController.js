@@ -63,7 +63,7 @@ export const bookConsultation = async (req, res, next) => {
             fileName: file.originalname,
             fileType: file.mimetype,
             fileSize: file.size,
-            s3Url: result.url,
+            s3Url: result.location,
             s3Key: result.key,
         });
         // Log file details to console
@@ -100,13 +100,55 @@ export const bookConsultation = async (req, res, next) => {
 // Code Logic to get all bookings
 export const getAllBooking = async (req, res, next) => {
     try {
-        const bookings = await Booking.find().sort({ createdAt: -1 }); // get all bookings
-        res.status(200).json({
-            totalBooking: bookings.length,
-            bookings: bookings
-        });
+        const limit = parseInt(req.query.limit) || 1;
+        const page = parseInt(req.query.page) || 20;
+        const skip = (page - 1) * limit;
+        const bookings = await Booking.find().sort({ createdAt: -1 })
+        .skip(skip)
+        .limit(limit); // get all bookings
+        res.status(200).json(bookings);
     } catch (error) {
         console.error(`Error retrieving bookings`);
         next(error);
     }
+};
+
+// Code Logic to search for bookings
+export const searchBookings = async (req, res, next) => {
+    const term = req.query.term;
+    const limit = parseInt(req.query.limit) || 1;
+    const page = parseInt(req.query.page) || 20;
+    const skip = (page - 1) * limit;
+    // Check if a term(name or email) is given
+    if(!term) {
+        res.status(400).json({message: "Please input name or email to search for."})
+    };
+
+    try {
+        const result = await Booking.find({
+            $or: [
+            {name: {$regex: term, $options: "i"}},
+            {email: {$regex: term, $options:"i"}}
+            ]
+        }).sort({ createdAt: -1 })
+        .skip(skip)
+        .limit(limit);
+        return res.status(200).json(result);
+    } catch (error) {
+        next(error);
+    };
+};
+
+// Code Logic for dashboard analytics
+export const getBookingsAnalytics = async (req, res, next) => {
+    try {
+        //* Retrieve bookings from mongoDB first, then return length
+        /*const bookings = await Booking.find().sort({ createdAt: -1})
+        const totalBookings = bookings.length;*/
+        //* Use mongoDB countDocuments() method
+        const totalBookings = await Booking.countDocuments();
+        return res.status(200).json({totalBookings});
+    } catch (error) {
+        next(error);
+    };
 };

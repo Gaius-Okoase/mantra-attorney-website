@@ -144,7 +144,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               >
             </li>
           
-            
+            <li>
             <a class="main-nav-link nav-cta" href="#my-form"
               ><i class="fa-solid fa-address-card"></i> Log out </a
             >
@@ -163,7 +163,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                  <div class="dashboard-container">
     <header>
       <h1>Admin Dashboard</h1>
-      <p>You are highly welcome</p>
+      <h2>Welcome, Admin</h2>
       <button onclick="logout()">Logout</button>
     </header>
 
@@ -243,7 +243,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               ><br />
               <a class="footer-link" href="tel:++2348154517333">+234 8154-517-333</a
               >
-              <a class="footer-link" href="mailto:ogundelea076@gmail.com/mantraattorneys@gmail.com"
+              <a class="footer-link" href="mailto:ogundelea076@gmail.com"
                 >ogundelea076@gmail.com</a
               >
               <a class="footer-link" href="mailto:mantraattorneys@gmail.com"
@@ -288,7 +288,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
    
   
   <script>
-    const API_URL = 'https://mantra-attorney-website.onrender.com/api/v1/booking';
+    const API_URL = '/api/v1/booking';
     const token = localStorage.getItem('authToken');
 
     if (!token) {
@@ -317,12 +317,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       bookings.forEach(booking => {
         const li = document.createElement('li');
         li.innerHTML = `
-          <strong>Name:</strong> ${booking.name}<br/>
-          <strong>Email:</strong> ${booking.email}<br/>
-          <strong>Phone:</strong> ${booking.mobileNo}<br/>
-          <strong>Service:</strong> ${booking.legalServiceNeeded}<br/>
-          <strong>Date:</strong> ${new Date(booking.preferredDateAndTime).toLocaleString()}<br/>
-          <strong>Comment:</strong> ${booking.comment || 'N/A'}
+          <strong>Name: </strong> ${booking.name}<br/>
+          <strong>Email: </strong> ${booking.email}<br/>
+          <strong>Phone: </strong> ${booking.mobileNo}<br/>
+          <strong>Service: </strong> ${booking.legalServiceNeeded}<br/>
+          <strong>Date: </strong> ${new Date(booking.preferredDateAndTime).toLocaleString()}<br/>
+          <strong>Comment: </strong> ${booking.comment || 'N/A'}<br/>
+          <strong>Document(s) Attached: </strong>   ${booking.uploadFile && b.uploadFile.length > 0? `<a href="${b.uploadFile[0].s3Url}" target="_blank">View File</a>`: 'No File'}
         `;
         list.appendChild(li);
       });
