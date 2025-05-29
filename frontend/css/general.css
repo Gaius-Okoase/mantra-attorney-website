@@ -8,6 +8,13 @@ Shaded: #daa520
   padding: 0;
   box-sizing: border-box;
 }
+
+*:focus {
+  outline: none;
+  padding: 0.8rem 0.5rem;
+  box-shadow: 0 0 0 0.2rem goldenrod;
+}
+
 html {
   font-size: 62.5%;
   overflow-x: hidden;
@@ -30,8 +37,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 9.6rem;
-  padding-right: 2rem;
+  height: 5.6rem;
+  padding:1rem 2rem 0 0;
   position: relative;
   background-color: #fbf6e9;
 }
@@ -44,7 +51,14 @@ body {
 }
 
 .logo-img {
-  height: 15rem;
+  width: 10rem;
+  height: 10rem;
+  align-self: center;
+}
+
+.logo-div a:focus {
+  padding: 0;
+  box-shadow: none;
 }
 
 .logo-div h1 {
@@ -60,7 +74,8 @@ body {
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 2.8rem;
+  gap: 3.5rem;
+ 
 }
 
 .main-nav-link:link,
@@ -69,7 +84,7 @@ body {
   text-decoration: none;
   font-weight: 500;
   color: #000036;
-  font-size: 1.6rem;
+  font-size: 1.65rem;
   transition: all 0.3s;
 }
 
@@ -96,7 +111,6 @@ body {
   border: none;
   background: none;
   cursor: pointer;
-
   display: none;
 }
 
@@ -127,7 +141,7 @@ body {
 }
 
 .sticky .carousel {
-  margin-top: 9.6rem;
+  margin-top: 8.6rem;
 }
 
 /**************************/
@@ -136,9 +150,10 @@ body {
 
 .container {
   /* 1140px */
-  max-width: 120rem;
-  padding: 0 3.2rem;
-  margin: 0 auto;
+  margin-top: 13rem;
+  padding-left: 15rem;
+  padding-right: 15rem;
+
 }
 
  .whatsapp-container {
@@ -176,7 +191,7 @@ body {
 }
 
 .grid:not(:last-child) {
-  margin-bottom: 9.6rem;
+  margin-bottom: 3.6rem;
 }
 
 .grid--2-cols {
@@ -212,7 +227,7 @@ body {
 .heading-secondary {
   font-size: 2.4rem;
   line-height: 1.2;
-  margin-bottom: 9.6rem;
+  margin-bottom: 3.6rem;
 }
 
 .heading-tertiary {
@@ -223,11 +238,12 @@ body {
 
 .subheading {
   display: block;
-  font-size: 1.4rem;
-  font-weight: 500;
+  font-size: 1.8rem;
+  font-weight: bolder;
   color: goldenrod;
+  text-align: center;
   text-transform: uppercase;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
   letter-spacing: 0.75px;
 }
 
@@ -330,10 +346,13 @@ body {
 /**************************/
 
 .footer {
-  padding: 12.8rem 0;
-  border-top: 1px solid #eee;
-  background-color: #000036;
+  background-color: #33335e;
   color: white;
+}
+
+.footer-div {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
 }
 
 .grid--footer {
@@ -350,6 +369,7 @@ body {
   margin-bottom: 3.2rem;
   background-color: white;
   border-radius: 15px;
+  width: 10rem;
 }
 
 .social-links {
@@ -357,6 +377,7 @@ body {
   display: flex;
   gap: 2.4rem;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
 
 .social-icon {
@@ -405,12 +426,6 @@ body {
 .footer-link:hover,
 .footer-link:active {
   color: gold;
-}
-
-*:focus {
-  outline: none;
-  padding: 0.8rem 0.5rem;
-  box-shadow: 0 0 0 0.2rem goldenrod;
 }
 
 /* HELPER/SETTINGS CLASSES */

@@ -1,3 +1,5 @@
+
+
 ////////////////////////////////
 //Fixing the current date at the copy right
 const yearEl = document.querySelector(".year");
@@ -72,7 +74,7 @@ const obs = new IntersectionObserver(
     //In the view point
     root: null, // we will observe the hero section inside the view port
     threshold: 0,
-    rootMargin: "-80px",
+    rootMargin: "-70px",
   }
 );
 obs.observe(sectionHeroEl);
@@ -125,7 +127,7 @@ setInterval(() => {
 
   currentIndex += direction;
   updateCarousel();
-}, 3000);
+}, 5000);
 
 ///////////////////////////////////////////////////////////
 // CTA contact us
@@ -188,121 +190,155 @@ const articles = {
   nigeria: [
     {
       title: "Land Use Act and Urban Development",
-      url: "#",
+      url: "https://en.wikipedia.org/wiki/Rural_development_in_Nigeria",
       caption:
         "The Land Use Act governs land ownership in Nigeria. It grants state governors control over land and impacts urban planning, land use regulation, and property development rights across the country.",
-    },
+      datePublished: "2025-03-17",
+      },
     {
       title: "Corporate Law in Nigeria",
-      url: "#",
+      url: "https://en.wikipedia.org/wiki/Companies_and_Allied_Matters_Act,_2020",
       caption:
         "Corporate law in Nigeria is regulated by CAMA (Companies and Allied Matters Act). It outlines how businesses are formed, run, and dissolved, including shareholder rights and board duties.",
-    },
+      datePublished: "2025-05-30",
+      },
     {
       title: "Marriage and Family Law",
-      url: "#",
+      url: "https://en.wikipedia.org/wiki/Polygamy_in_Nigeria",
       caption:
         "Family law governs relationships, marriage, divorce, custody, and inheritance. Nigeria operates a dual legal system that combines customary, statutory, and religious laws depending on region and practice.",
-    },
+      datePublished: "2024-04-02",
+      },
     {
       title: "Intellectual Property Rights",
-      url: "#",
+      url: "https://en.wikipedia.org/wiki/African_Regional_Intellectual_Property_Organization",
       caption:
         "IP laws protect the rights of creators over their inventions and works. Nigerian IP rights include trademarks, patents, designs, and copyright under various national and international frameworks.",
-    },
+      datePublished: "2025-02-12",
+      },
     {
       title: "Employment Law and Workers’ Rights",
-      url: "#",
+      url: "https://en.wikipedia.org/wiki/Nigerian_labour_law",
       caption:
         "Employment regulations protect workers’ rights, establish minimum wage, and define labor contracts, termination conditions, and workplace safety as mandated by Nigeria’s Labour Act.",
-    },
+      datePublished: "2024-04-02",
+      },
     {
       title: "Environmental Regulation",
-      url: "#",
+      url: "https://en.wikipedia.org/wiki/Federal_Ministry_of_Environment_(Nigeria)",
       caption:
         "The National Environmental Standards enforce pollution control and environmental protection. Legal requirements affect oil & gas firms, manufacturing industries, and construction projects.",
-    },
+      datePublished: "2023-04-22",
+      },
     {
       title: "Constitutional Law Basics",
-      url: "#",
+      url: "https://en.wikipedia.org/wiki/Constitution_of_Nigeria",
       caption:
         "The Nigerian Constitution is the supreme law guiding democracy, the separation of powers, fundamental rights, and rule of law. It is essential in resolving conflicts between individuals and the state.",
-    },
+      datePublished: "2023-11-23",
+      },
     {
       title: "Dispute Resolution Mechanisms",
-      url: "#",
+      url: "https://en.wikipedia.org/wiki/Dispute_resolution",
       caption:
         "Nigeria recognizes litigation, arbitration, and mediation. ADR is increasingly favored in commercial and civil matters due to its flexibility, cost-effectiveness, and confidentiality.",
-    },
+      datePublished: "2021-04-09",
+      },
   ],
 
   international: [
     {
       title: "GDPR Compliance for Global Firms",
-      url: "#",
+      url: "https://en.wikipedia.org/wiki/General_Data_Protection_Regulation",
       caption:
         "The General Data Protection Regulation (GDPR) imposes strict data privacy rules for businesses in the EU and globally. It mandates user consent, data breach reporting, and rights to data erasure.",
-    },
+      datePublished: "2023-12-09",
+      },
     {
       title: "International Arbitration Trends",
-      url: "#",
+      url: "https://en.wikipedia.org/wiki/International_arbitration",
       caption:
         "Arbitration remains a preferred method for resolving international commercial disputes. Trends include virtual hearings, institutional rules updates, and transparency in awards.",
-    },
+      datePublished: "2024-04-02",
+      },
     {
       title: "Global Tax Law Update",
-      url: "#",
+      url: "https://en.wikipedia.org/wiki/International_taxation",
       caption:
         "Countries are aligning tax systems to curb evasion. The OECD’s BEPS framework and global minimum tax reforms are reshaping multinational taxation and compliance requirements.",
-    },
+      datePublished: "2024-04-02",
+      },
     {
       title: "Cross-border Mergers",
-      url: "#",
+      url: "https://en.wikipedia.org/wiki/Mergers_and_acquisitions",
       caption:
         "Mergers across jurisdictions face legal hurdles involving antitrust laws, due diligence, and cultural differences. Legal teams must navigate regulatory filings and labor laws.",
-    },
+      datePublished: "2025-02-02",
+      },
     {
       title: "Human Rights and International Law",
-      url: "#",
+      url: "https://en.wikipedia.org/wiki/International_human_rights_law",
       caption:
         "International law protects basic human rights through treaties like the ICCPR, ECHR, and African Charter. States are expected to uphold civil, political, and economic rights globally.",
-    },
+      datePublished: "2024-04-02",
+      },
     {
       title: "Immigration and Mobility Laws",
-      url: "#",
+      url: "https://en.wikipedia.org/wiki/Immigration_law",
       caption:
         "Global firms face evolving immigration laws. Visa regulations, work permits, and expatriate rights are governed by bilateral agreements and national immigration acts.",
-    },
+      datePublished: "2025-01-02",
+      },
     {
       title: "Cybersecurity Laws Worldwide",
-      url: "#",
+      url: "https://en.wikipedia.org/wiki/Cyber-security_regulation",
       caption:
         "Governments are enacting cyber laws to protect data and prevent hacking. Cybercrime legislation includes penalties for unauthorized access, data theft, and identity fraud.",
+        datePublished: "2025-06-04",
     },
     {
       title: "Trade Sanctions and Compliance",
-      url: "#",
+      url: "https://en.wikipedia.org/wiki/International_sanctions",
       caption:
         "Sanctions impact international trade and finance. Legal teams must ensure compliance with U.S. OFAC, U.K. OFSI, and EU regulations to avoid penalties and reputation damage.",
-    },
+      datePublished: "2025-04-06",
+      },
   ],
 };
-
 function createCards(containerId, data) {
-  const container = document.querySelector(
-    `#${containerId} .article-container`
-  );
+  const container = document.querySelector(`#${containerId} .article-container`);
   data.forEach((article) => {
     const link = document.createElement("a");
     link.href = article.url;
     link.className = "article-card";
+    link.target = "_blank"; // Opens in a new tab
+    link.rel = "noopener noreferrer"; // Security best practice
+
+    const formattedDate = article.datePublished
+      ? new Date(article.datePublished).toLocaleDateString("en-US", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        })
+      : null;
+
     link.innerHTML = `
-          <h3>${article.title}</h3>
-          <p>${article.caption}</p>
-        `;
+      <div class="card-content">
+        <h3>${article.title}</h3>
+        <p>${article.caption}</p>
+      </div>
+      ${
+        formattedDate
+          ? `<div class="published-date"><em>${formattedDate}</em></div>`
+          : ""
+      }
+    `;
     container.appendChild(link);
   });
 }
+
+
+
 
 function setupNavigation(carouselId) {
   const carousel = document.getElementById(carouselId);

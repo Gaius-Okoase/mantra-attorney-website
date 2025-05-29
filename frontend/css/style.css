@@ -1,3 +1,4 @@
+
 /**************************/
 /* CAROUSEL SLIDES*/
 /**************************/
@@ -14,6 +15,7 @@
   border-radius: 10px;
   background-color: #fbf6e9;
   padding-top: 3rem;
+ 
 }
 
 .carousel-track {
@@ -23,8 +25,8 @@
 
 .carousel-slide {
   position: relative;
-  min-width: 100%;
-  height: 500px;
+   min-width: 100%;
+  max-height:600px;
 }
 
 .carousel-slide img {
@@ -47,7 +49,7 @@
   top: 50%;
   left: 50%;
   max-width: 40%;
-  transform: translate(-80%, -300%);
+  transform: translate(-80%, -350%);
   transition: transform 1s ease, opacity 1s ease;
 }
 
@@ -85,19 +87,18 @@
   background-color: #daa520;
 }
 
+
 /**************************/
 /* HERO SECTION */
 /**************************/
 
 .section-hero {
-  padding: 0 0 9.6rem 0;
+padding: 0 15rem;
   background-color: #fbf6e9;
 }
 
 .hero {
   max-width: 130rem;
-  margin: 0 auto;
-  padding: 0 4.2rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 9.6rem;
@@ -165,39 +166,32 @@
 /**************************/
 /* ABOUT US SECTION */
 /**************************/
-.aboutUs-section {
-  margin-top: 3rem;
-}
-
-.aboutUs {
-  margin-bottom: 3rem;
-}
-
 .aboutUs h2 {
-  font-size: 1.8rem;
+  font-size: 1.95rem;
   max-width: 60%;
   line-height: 3rem;
   letter-spacing: 0.1rem;
+  margin-bottom: 2rem;
 }
 
 .feature-icon {
   color: goldenrod;
-  font-size: 2.5rem;
+  font-size: 1.4rem;
   background-color: #fdf2e9;
-  margin-bottom: 3.2rem;
-  padding: 1.6rem;
+  margin-bottom: 2.2rem;
+  padding: 1.3rem;
   border-radius: 50%;
 }
 
 .feature-title {
-  font-size: 2rem;
+  font-size: 1.9rem;
   color: #333;
   font-weight: 700;
   margin-bottom: 1.6rem;
 }
 
 .feature-text {
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   line-height: 1.8;
 }
 
@@ -206,7 +200,6 @@
 /**************************/
 
 .section-how {
-  padding: 9.6rem 0;
   background-color: #fff;
 }
 
@@ -218,7 +211,7 @@
 }
 
 .step-description {
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   line-height: 1.8;
   margin-bottom: 1.5rem;
 }
@@ -243,25 +236,23 @@
 /**************************/
 /* TEAM SECTION */
 /**************************/
-
-.section-teams {
-  padding: 9.6rem 0;
-}
-
 .team {
-  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.075);
   border-radius: 11px;
   overflow: hidden;
   transition: all 0.4s;
+  margin-top: 2rem;
 }
 
 .team:hover {
   transform: translateY(-1.2rem);
-  box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.06);
 }
 
 .team-content {
-  padding: 1.2rem 4.8rem 4.8rem 4.8rem;
+  padding: 1.2rem 2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
 .team-tags {
@@ -281,7 +272,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .team-attribute {
@@ -289,6 +280,7 @@
   display: flex;
   align-items: center;
   gap: 1.4rem;
+  padding-left: 5rem;
 }
 
 .team-icon {
@@ -312,30 +304,21 @@
 /**************************/
 /* TESTIMONIALS SECTION */
 /**************************/
-.testimonials-section {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 4rem 2rem;
-}
 
 .testimonials-title {
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-bottom: 3rem;
   color: goldenrod;
   font-weight: bold;
+  text-align: center;
 }
 
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-}
 
 .testimonial-card {
   background: white;
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
 
@@ -355,28 +338,25 @@
   font-weight: bold;
   margin: 0.5rem 0;
   color: #222;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 
 .testimonial-text {
   font-style: italic;
   line-height: 1.6;
   color: #555;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
 }
 
 .stars {
   color: goldenrod;
   margin-top: 0.8rem;
+  font-size: 1.3rem;
 }
 
 /**************************/
 /* CTA SECTION */
 /**************************/
-
-.section-cta {
-  padding: 4.8rem 0 12.8rem;
-}
 
 .cta {
   display: grid;
