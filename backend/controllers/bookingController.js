@@ -63,7 +63,7 @@ export const bookConsultation = async (req, res, next) => {
             fileName: file.originalname,
             fileType: file.mimetype,
             fileSize: file.size,
-            s3Url: result.url,
+            s3Url: result.location,
             s3Key: result.key,
         });
         // Log file details to console
