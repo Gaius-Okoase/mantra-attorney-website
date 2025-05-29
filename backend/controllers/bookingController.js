@@ -100,12 +100,12 @@ export const bookConsultation = async (req, res, next) => {
 // Code Logic to get all bookings
 export const getAllBooking = async (req, res, next) => {
     try {
-        const limit = parseInt(req.query.limit) || 1;
-        const page = parseInt(req.query.page) || 20;
-        const skip = (page - 1) * limit;
+        // const limit = parseInt(req.query.limit) || 1;
+        // const page = parseInt(req.query.page) || 20;
+        // const skip = (page - 1) * limit;
         const bookings = await Booking.find().sort({ createdAt: -1 })
-        .skip(skip)
-        .limit(limit); // get all bookings
+        // .skip(skip)
+        // .limit(limit); // get all bookings
         res.status(200).json(bookings);
     } catch (error) {
         console.error(`Error retrieving bookings`);
@@ -116,9 +116,9 @@ export const getAllBooking = async (req, res, next) => {
 // Code Logic to search for bookings
 export const searchBookings = async (req, res, next) => {
     const term = req.query.term;
-    const limit = parseInt(req.query.limit) || 1;
-    const page = parseInt(req.query.page) || 20;
-    const skip = (page - 1) * limit;
+    // const limit = parseInt(req.query.limit) || 1;
+    // const page = parseInt(req.query.page) || 20;
+    // const skip = (page - 1) * limit;
     // Check if a term(name or email) is given
     if(!term) {
         res.status(400).json({message: "Please input name or email to search for."})
@@ -131,8 +131,8 @@ export const searchBookings = async (req, res, next) => {
             {email: {$regex: term, $options:"i"}}
             ]
         }).sort({ createdAt: -1 })
-        .skip(skip)
-        .limit(limit);
+        // .skip(skip)
+        // .limit(limit);
         return res.status(200).json(result);
     } catch (error) {
         next(error);

@@ -3,8 +3,10 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
+import multer from 'multer';
 import bookingRouter from './routers/bookingRouter.js'
 import authRouter from './routers/authRouter.js'
+import testimonialRouter from './routers/tetimonialRouter.js'
 import connectDb from './config/db.js';
 import { verifyAdmin } from './middleware/verifyAdmin.js';
 import { fileURLToPath } from 'url';
@@ -50,10 +52,19 @@ const PORT = process.env.PORT || 3500; // Set up port to listen to server
 // API Routes
 app.use('/api/v1/booking', bookingRouter);
 app.use('/api/v1/auth', authRouter);
+app.use('api/v1/tetimonial', testimonialRouter);
 // Global Error Handler
 app.use((err, req, res, next) => {
-    console.log(err);
-    res.status(err.status || 500).json({ error: "Sorry, something went wrong."})
+  if (err instanceof multer.MulterError) {
+    // Multer-specific errors
+    if (err.code === 'LIMIT_FILE_SIZE') {
+      return res.status(400).json({ error: 'File too large. Max size is 5MB.' });
+    }
+    return res.status(400).json({ error: err.message });
+  } else if (err) {
+    // General errors
+    return res.status(500).json({ error: err.message || 'Internal Server Error' });
+  }
 })
 
 app.listen(PORT, () => {
