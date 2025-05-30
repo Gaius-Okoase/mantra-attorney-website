@@ -49,7 +49,7 @@ export const postTestimonial = async (req, res, next) => {
 export const getAllTestimonial = async (req, res, next) => {
     try {
         const testimonials = await Testimonial.find().sort({ createdAt : -1});
-        return res.status(400).json(testimonials)
+        return res.status(200).json(testimonials)
     } catch (error) {
         console.error(error);
         next(error)

@@ -1,6 +1,6 @@
 // Import validoator package to check email
 import validator from 'validator';
-//Import Models 
+//Import necessary Modules 
 import { Booking } from '../models/bookingModel.js';
 import { uploadFileToS3 } from '../utils/s3Uploader.js';
 import { sendBookingEmail } from '../utils/emailSender.js';
