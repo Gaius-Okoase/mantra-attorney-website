@@ -3,7 +3,7 @@ import express from 'express';
 import multer from 'multer';
 
 //Import controller to handle requests
-import { getAllTestimonial, postTestimonial } from '../controllers/testimonialController.js'
+import { getAllTestimonial, postTestimonial, deleteTestimonial } from '../controllers/testimonialController.js'
 import { verifyAdmin } from '../middleware/verifyAdmin.js';
 
 const router = express.Router();
@@ -26,7 +26,8 @@ const upload = multer({
 
 //Routes to controller
 router.post('/',  verifyAdmin, upload.single('profilePicture'), postTestimonial);
-router.get('/', getAllTestimonial)
+router.get('/', getAllTestimonial);
+router.delete('/:id', verifyAdmin, deleteTestimonial);
 
 export default router;
 

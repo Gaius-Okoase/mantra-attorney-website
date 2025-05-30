@@ -54,4 +54,18 @@ export const getAllTestimonial = async (req, res, next) => {
         console.error(error);
         next(error)
     }
+};
+
+export const deleteTestimonial = async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const testimonial = await Testimonial.findById(id);
+        if(!testimonial) {
+            return res.status(404).json({error: "Testimonial not found."});
+        }
+
+    } catch (error) {
+        console.error('Error', error);
+        next(error);
+    }
 }
