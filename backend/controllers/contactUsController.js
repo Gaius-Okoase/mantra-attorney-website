@@ -2,7 +2,7 @@ import validator from 'validator'; // To validate
 import { ContactUs } from '../models/contactUsModel.js';
 import { sendContactUsEmail } from '../utils/emailSender.js';
 
-//* Code Logic for contact us form
+//* Code Logic to submit contact us form
 export const contactUs = async (req, res, next) => {
     try {
         // Deconstruct necessary fields from req.body
@@ -26,6 +26,17 @@ export const contactUs = async (req, res, next) => {
 
     //Response message upon successful contact
     return res.status(201).json({message: "Thank you for reaching out! Your message has been received and we will get back to you soon."});
+    } catch (error) {
+        console.error('Error', error);
+        next(error);
+    }
+}
+
+//* Code Logic to get all contact us forms
+export const getAllContactUs = async (req, res, next) => {
+    try {
+        const allContactUsForm = await ContactUs.find().sort({createdAt: -1});
+        return res.status(200).json(allContactUsForm);
     } catch (error) {
         console.error('Error', error);
         next(error);
