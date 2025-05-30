@@ -2,8 +2,8 @@ import nodemailer from 'nodemailer';
 
 //Functioin to send email
 export const sendBookingEmail = async (bookingInfo) => {
-    //Set up transporter
     try {
+        //Set up transporter
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
@@ -41,3 +41,35 @@ export const sendBookingEmail = async (bookingInfo) => {
         `)
     };
 };
+
+export const sendContactUsEmail = async (contactUsInfo) => {
+    try {
+        // Set up transporter
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASSWORD,
+            },
+        });
+        // Set up mail options
+        const mailOptions = {
+            from: `"Mantra Attorney LP Website" <${process.env.EMAIL_USER}>`,
+            to: process.env.ADMIN_EMAIL,
+            subject: "New Contact Us Form",
+             html: `
+                <h2>New Booking Received</h2>
+                <p><strong>Name:</strong> ${contactUsInfo.fullname}</p>
+                <p><strong>Email:</strong> ${contactUsInfo.email}</p>
+                <p><strong>Message:</strong> ${contactUsInfo.message || 'N/A'}</p>
+            `
+        };
+
+        //Send the email
+        transporter.sendMail(mailOptions);
+        console.log("Contact-Us Email sent to Admin.");       
+    } catch (error) {
+        console.error('Error', error);
+        next(error);
+    }
+}

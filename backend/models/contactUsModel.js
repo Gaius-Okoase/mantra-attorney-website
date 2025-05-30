@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 //* Create Contact Us Schema
 const ContactUsSchema = new mongoose.Schema({
-    name:{
+    fullName:{
         type: String,
         required: true
     },

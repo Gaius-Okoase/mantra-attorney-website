@@ -1,13 +1,14 @@
 import validator from 'validator'; // To validate 
 import { ContactUs } from '../models/contactUsModel.js';
+import { sendContactUsEmail } from '../utils/emailSender.js';
 
 //* Code Logic for contact us form
 export const contactUs = async (req, res, next) => {
     try {
         // Deconstruct necessary fields from req.body
-    const {name, email, message} = req.body;
+    const {fullName, email, message} = req.body;
     // Validate input
-    if (!name || !email || !message){
+    if (!fullName || !email || !message){
         return res.status(400).json({error: "Please fill in all required fields."});
     }
     if(!validator.isEmail(email)){
@@ -15,10 +16,13 @@ export const contactUs = async (req, res, next) => {
     }
     // Create new contact us form based off ContactUs Model
     const newContactUs = new ContactUs({
-        name, email, message
+        fullName, email, message
     });
     // Save newly created form to DB
     await newContactUs.save();
+
+    // Send Email notification to admin
+    await sendContactUsEmail(newContactUs);
 
     //Response message upon successful contact
     return res.status(201).json({message: "Thank you for reaching out! Your message has been received and we will get back to you soon."});
