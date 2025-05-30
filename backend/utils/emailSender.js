@@ -54,10 +54,10 @@ export const sendContactUsEmail = async (contactUsInfo) => {
         const mailOptions = {
             from: `"Mantra Attorney LP Website" <${process.env.EMAIL_USER}>`,
             to: process.env.ADMIN_EMAIL,
-            subject: "New Contact Us Form",
+            subject: "Contact Us Form",
              html: `
-                <h2>New Booking Received</h2>
-                <p><strong>Name:</strong> ${contactUsInfo.fullname}</p>
+                <h2>New Message from Contact Us Form</h2>
+                <p><strong>Name:</strong> ${contactUsInfo.fullName}</p>
                 <p><strong>Email:</strong> ${contactUsInfo.email}</p>
                 <p><strong>Message:</strong> ${contactUsInfo.message || 'N/A'}</p>
             `
