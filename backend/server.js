@@ -7,6 +7,7 @@ import multer from 'multer';
 import bookingRouter from './routers/bookingRouter.js'
 import authRouter from './routers/authRouter.js'
 import testimonialRouter from './routers/testimonialRouter.js'
+import contactUsRouter from './routers/contactUsRouter.js'
 import connectDb from './config/db.js';
 import { verifyAdmin } from './middleware/verifyAdmin.js';
 import { fileURLToPath } from 'url';
@@ -16,10 +17,6 @@ dotenv.config(); // To access .env
 connectDb(); //Connect server to MongoDB
 
 const app = express(); // Instantiate express app
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = dirname(__filename);
-
-//const PORT = 3500; // Set up port to listen to server
 
 // Middlewares
 app.use(express.json());
@@ -37,15 +34,6 @@ app.use((req, res, next) => {
 
 //Serve static public files
 app.use(express.static('public'));
-// // Route to login page
-// app.get('/adminLogin.html', (req, res) => {
-//  res.sendFile(path.join(__dirname, 'public', 'adminLogin.html'));
-// });
-// // Protected route for dashboard page
-// app.get('/dashboard.html', verifyAdmin, (req, res) => {
-//   res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
-// });
-
 
 const PORT = process.env.PORT || 3500; // Set up port to listen to server
 
@@ -53,6 +41,8 @@ const PORT = process.env.PORT || 3500; // Set up port to listen to server
 app.use('/api/v1/booking', bookingRouter);
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/testimonial', testimonialRouter);
+app.use('/api/v1/contact-us', contactUsRouter);
+
 // Global Error Handler
 app.use((err, req, res, next) => {
   if (err instanceof multer.MulterError) {
