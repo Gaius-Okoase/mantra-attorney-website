@@ -55,7 +55,7 @@ allLinks.forEach(function (link) {
 ///////////////////////////////
 //STICKY NAVIGATION
 
-const sectionHeroEl = document.querySelector(".carousel");
+const sectionHeroEl = document.querySelector(".section-hero");
 
 const obs = new IntersectionObserver(
   function (entries) {
@@ -74,7 +74,7 @@ const obs = new IntersectionObserver(
     //In the view point
     root: null, // we will observe the hero section inside the view port
     threshold: 0,
-    rootMargin: "-70px",
+    rootMargin: "-80px",
   }
 );
 obs.observe(sectionHeroEl);
@@ -131,58 +131,75 @@ setInterval(() => {
 
 ///////////////////////////////////////////////////////////
 // CTA contact us
+async function submitForm(event) {
+    event.preventDefault();
 
-document.addEventListener("DOMContentLoaded", function () {
-  const ctaForm = document.querySelector(".cta-form");
-  const ctaMessageBox = document.getElementById("cta-form-message");
+    const fullName = document.getElementById("full-name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+    const messageBox = document.getElementById("cta-form-message");
 
-  function showCtaMessage(msg, isError = false) {
-    ctaMessageBox.textContent = msg;
-    ctaMessageBox.classList.toggle("error", isError);
-  }
+    // Clear and hide previous response message
+    messageBox.className = "cta-form-message";
+    messageBox.textContent = "";
+    messageBox.style.display = "none";
 
-  ctaForm.addEventListener("submit", async function (e) {
-    e.preventDefault();
+    // Hide validation error messages
+    document.querySelectorAll(".cta-form-message.error").forEach(el => {
+      el.style.display = "none";
+    });
 
-    const ctaName = document.getElementById("full-name").value.trim();
-    const ctaEmail = document.getElementById("email").value.trim();
-    const ctaService = document.getElementById("departments").value;
+    let isValid = true;
 
-    // Clear previous messages
-    showCtaMessage("");
-
-    if (!ctaName || !ctaEmail || !ctaService) {
-      showCtaMessage("Please fill all required fields.", true);
-      return;
+    // Full name validation
+    if (fullName.length < 3) {
+      document.getElementById("error-name").style.display = "block";
+      isValid = false;
     }
 
-    const ctaFormData = new FormData();
-    ctaFormData.append("name", ctaName);
-    ctaFormData.append("email", ctaEmail);
-    ctaFormData.append("legalServiceNeeded", ctaService);
+    // Basic email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      document.getElementById("error-email").style.display = "block";
+      isValid = false;
+    }
+
+    // Message validation
+    if (message.length < 10) {
+      document.getElementById("error-bio").style.display = "block";
+      isValid = false;
+    }
+
+    if (!isValid) return;
+
+    // Show loading message
+    messageBox.style.display = "block";
+    messageBox.className = "cta-form-message loading";
+    messageBox.textContent = "Sending... Please wait.";
 
     try {
-      const ctaResponse = await fetch(
-        "https://2d8f-102-89-42-73.ngrok-free.app/api/v1/booking",
-        {
-          method: "POST",
-          body: ctaFormData,
-        }
-      );
+      const response = await fetch("https://mantra-attorney-website.onrender.com/api/v1/contact-us", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fullName, email, message })
+      });
 
-      if (ctaResponse.ok) {
-        showCtaMessage("Your request has been submitted successfully!");
-        ctaForm.reset();
-      } else {
-        const data = await ctaResponse.json();
-        showCtaMessage(data.message || "Failed to submit form.", true);
-      }
-    } catch (error) {
-      console.error("CTA Form Error:", error);
-      showCtaMessage("Network error. Please try again later.", true);
+      if (!response.ok) throw new Error("Failed to send");
+
+      // Show success message
+      messageBox.className = "cta-form-message success";
+      messageBox.textContent = "Message sent successfully! We’ll get back to you soon.";
+    
+      document.getElementById("full-name").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("message").value = "";
+    } catch (err) {
+      // Show error message
+      messageBox.className = "cta-form-message error";
+      messageBox.textContent = "An error occurred. Please try again later.";
     }
-  });
-});
+  }
+
 
 ///////////////////////////////////////////////////////////
 // THE LAW FIRM ARTICLEs

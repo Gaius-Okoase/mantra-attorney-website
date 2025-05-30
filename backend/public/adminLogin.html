@@ -171,8 +171,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       margin-top: 1rem;
       min-height: 1.2em;
       font-weight: 600;
-      font-size: 1.1rem;
+      font-size: 1.6rem;
     }
+
+     /**************************/
+  /* BELOW 544px (Phones) */
+  /**************************/
+
+  @media (max-width: 34em) {
+      input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 1.6rem 2rem 1rem 0.8rem;
+    }
+  }
   </style>
   </head>
   <body class="sticky">
@@ -195,15 +207,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <nav class="main-nav">
           <ul class="main-nav-list">
             <li>
-              <a class="main-nav-link" href="./index.html"
-                ><i class="fa-solid fa-house"></i>Home</a
+              <a class="main-nav-link" href="../../frontend/index.html"
+                ><i class="fa-solid fa-house"></i>Homepage</a
               >
             </li>
-          
-            
-            <a class="main-nav-link nav-cta" href="#my-form"
-              ><i class="fa-solid fa-address-card"></i> Log out </a
-            >
           </li> 
           </ul>
         </nav>
