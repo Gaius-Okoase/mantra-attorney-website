@@ -1,6 +1,8 @@
 //* Import Testimonial Model
 import { Testimonial } from "../models/testimonialModel.js";
 
+import { uploadFileToS3 } from "../utils/s3Uploader.js";
+
 //* Code Logic for posting Testimonials
 export const postTestimonial = async (req, res, next) => {
     try {

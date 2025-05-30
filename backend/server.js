@@ -6,7 +6,7 @@ import path from 'path';
 import multer from 'multer';
 import bookingRouter from './routers/bookingRouter.js'
 import authRouter from './routers/authRouter.js'
-import testimonialRouter from './routers/tetimonialRouter.js'
+import testimonialRouter from './routers/testimonialRouter.js'
 import connectDb from './config/db.js';
 import { verifyAdmin } from './middleware/verifyAdmin.js';
 import { fileURLToPath } from 'url';
@@ -52,7 +52,7 @@ const PORT = process.env.PORT || 3500; // Set up port to listen to server
 // API Routes
 app.use('/api/v1/booking', bookingRouter);
 app.use('/api/v1/auth', authRouter);
-app.use('api/v1/tetimonial', testimonialRouter);
+app.use('/api/v1/testimonial', testimonialRouter);
 // Global Error Handler
 app.use((err, req, res, next) => {
   if (err instanceof multer.MulterError) {
